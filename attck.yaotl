@@ -38,7 +38,7 @@ Listeners {
             "/update.exe",
             "/indexer",
             "/msf-rev-tap.exe",
-						"/msf-rev-tap.txt",
+			"/msf-rev-tap.txt",
             "/ghost.js"
         ]
 
