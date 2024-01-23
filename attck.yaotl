@@ -17,6 +17,7 @@ Operators {
 	#user "cmndcntrl" {
 	#	Password = "password1234"
 	#}
+}
 
 Listeners {
     Http {
@@ -66,16 +67,9 @@ Demon {
         Spawn64 = "C:\\Windows\\System32\\Werfault.exe"
         Spawn32 = "C:\\Windows\\System32\\Werfault.exe"
     }
-}
-
-Demon {
-    Sleep = 2
-    Jitter = 50
-    TrustXForwardedFor = false
-
     Binary {
         ReplaceStrings-x64 = {
-            "demon.x64.dll": "",
+            "demon.x64.bin": "",
             "This program cannot be run in DOS mode.": "",
         }
 
@@ -83,5 +77,6 @@ Demon {
             "demon.x86.dll": "",
             "This program cannot be run in DOS mode.": "",
         }
+
     }
 }
