@@ -1,11 +1,12 @@
 Teamserver {
 	Host = "0.0.0.0"
-	Port = 24242
+	Port = 24842
 
-	Build {
-	    Compiler64 = "data/x86_64-w64-mingw32-cross/bin/x86_64-w64-mingw32-gcc"
-	    Nasm = "/usr/bin/nasm"
-	}
+  Build {
+        Compiler64 = "data/x86_64-w64-mingw32-cross/bin/x86_64-w64-mingw32-gcc"
+        Compiler86 = "data/i686-w64-mingw32-cross/bin/i686-w64-mingw32-gcc"
+        Nasm = "/usr/bin/nasm"
+    }
 }
 
 WebHook {
@@ -33,11 +34,11 @@ Listeners {
     Http {
         Name         = "HTTP"
         Hosts        = [
-            "192.168.1.172", # CHANGE TO TEAM SERVER IP
+            "0.0.0.0", # CHANGE TO TEAM SERVER IP
         ]
-        HostBind     = "192.168.1.172" # CHANGE TO TEAM SERVER IP
+        HostBind     = "0.0.0.0" # CHANGE TO TEAM SERVER IP
         HostRotation = "round-robin"
-        Port         = 443
+        Port         = 8080
         Secure       = false
         UserAgent    = "Slack/415620 CFNetwork/1240.0.4 Darwin/20.5.0"
 
@@ -75,10 +76,24 @@ Listeners {
 }
 
 Demon {
-    Sleep = 5
+    Sleep = 2
+    Jitter = 50
+    TrustXForwardedFor = false
 
     Injection {
-        Spawn64 = "C:\\Windows\\System32\\notepad.exe"
-        Spawn32 = "C:\\Windows\\SysWOW64\\notepad.exe"
+        Spawn64 = "C:\\Windows\\System32\\Werfault.exe"
+        Spawn32 = "C:\\Windows\\System32\\Werfault.exe"
+    }
+    Binary {
+        ReplaceStrings-x64 = {
+            "demon.x64.exe": "demon.x64.bin",
+            "This program cannot be run in DOS mode.": "",
+        }
+
+        ReplaceStrings-x86 = {
+            "demon.x86.dll": "demon.x86.bin",
+            "This program cannot be run in DOS mode.": "",
+        }
+
     }
 }

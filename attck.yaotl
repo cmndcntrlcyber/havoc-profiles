@@ -1,6 +1,6 @@
 Teamserver {
 	Host = "0.0.0.0"
-	Port = 24842
+	Port = 40666
 
   Build {
         Compiler64 = "data/x86_64-w64-mingw32-cross/bin/x86_64-w64-mingw32-gcc"
@@ -69,7 +69,7 @@ Demon {
     }
     Binary {
         ReplaceStrings-x64 = {
-            "demon.x64.bin": "",
+            "demon.x64.exe": "demon.x64.bin",
             "This program cannot be run in DOS mode.": "",
         }
 
